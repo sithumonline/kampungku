@@ -1,0 +1,7 @@
+{
+  "name": "KampungKu",
+  "description": "A community-driven service booking platform bridging rural elderly residents with urban families. Features service booking and real-time worker tracking.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
