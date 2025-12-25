@@ -12,6 +12,8 @@ import Confirmation from './pages/Confirmation';
 import WorkerJob from './pages/WorkerJob';
 import Tracking from './pages/Tracking';
 import Completion from './pages/Completion';
+import PaymentFailed from './pages/PaymentFailed';
+import TrackingError from './pages/TrackingError';
 
 const App: React.FC = () => {
   return (
@@ -30,6 +32,10 @@ const App: React.FC = () => {
               <Route path="/worker" element={<WorkerJob />} />
               <Route path="/tracking" element={<Tracking />} />
               <Route path="/completion" element={<Completion />} />
+              
+              {/* Part C: Error Flows (For screenshots) */}
+              <Route path="/payment-failed" element={<PaymentFailed />} />
+              <Route path="/tracking-error" element={<TrackingError />} />
               
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

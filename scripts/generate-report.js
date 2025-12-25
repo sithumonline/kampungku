@@ -23,6 +23,7 @@ const SCENARIOS = [
             { name: '2. Service Details Page', url: `${BASE_URL}/#/service/svc-001`, filename: '2_service_details.png' },
             { name: '3. Booking Form / Scheduling Page', url: `${BASE_URL}/#/booking/svc-001`, filename: '3_booking.png' },
             { name: '4. Payment Method Page', url: `${BASE_URL}/#/payment/svc-001`, filename: '4_payment.png' },
+            { name: '4b. Payment Failed (Error Flow)', url: `${BASE_URL}/#/payment-failed`, filename: '4b_payment_failed.png' },
             { name: '5. Booking Confirmation Page', url: `${BASE_URL}/#/confirmation`, filename: '5_confirmation.png' },
         ]
     },
@@ -31,6 +32,7 @@ const SCENARIOS = [
         items: [
             { name: '1. Worker Status / Assigned Job Screen', url: `${BASE_URL}/#/worker`, filename: '6_worker_job.png' },
             { name: '2. Real-Time Map Tracking Screen', url: `${BASE_URL}/#/tracking`, filename: '7_tracking.png' },
+            { name: '2b. GPS Permissions Denied (Error Flow)', url: `${BASE_URL}/#/tracking-error`, filename: '7b_tracking_error.png' },
             // Note: In this demo, user view and worker view might share components or routes. 
             // We capture the tracking page again for the 'User View' context if it visually differs, 
             // or we can navigate to a specific state if implemented.
