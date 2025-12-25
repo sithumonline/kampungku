@@ -9,13 +9,21 @@ const Confirmation: React.FC = () => {
   const navigate = useNavigate();
   const { currentBooking } = useApp();
 
-  if (!currentBooking) {
-    navigate('/');
-    return null;
-  }
+  // Mock data for direct access (e.g. screenshot generation)
+  const displayBooking = currentBooking || {
+      id: "BK-7829-23",
+      serviceId: "svc-001",
+      workerId: "wrk-001",
+      date: "25 Dec 2025",
+      time: "10:00 AM",
+      address: "23, Jalan Kampung Kami, 43000",
+      status: "Confirmed",
+      recipientName: "Sarah",
+      totalPrice: 80
+  };
 
-  const service = SERVICES.find(s => s.id === currentBooking.serviceId);
-  const worker = WORKERS.find(w => w.id === currentBooking.workerId);
+  const service = SERVICES.find(s => s.id === displayBooking.serviceId) || SERVICES[0];
+  const worker = WORKERS.find(w => w.id === displayBooking.workerId) || WORKERS[0];
 
   return (
     <div className="min-h-screen bg-white p-6 flex flex-col items-center justify-center text-center">
@@ -24,7 +32,7 @@ const Confirmation: React.FC = () => {
       </div>
       
       <h1 className="text-2xl font-bold text-gray-900 font-poppins mb-2">Booking Confirmed!</h1>
-      <p className="text-gray-500 mb-8">Ref: {currentBooking.id}</p>
+      <p className="text-gray-500 mb-8">Ref: {displayBooking.id}</p>
 
       <div className="w-full bg-gray-50 rounded-2xl p-6 mb-8 text-left">
         <h3 className="font-semibold text-gray-900 mb-4 border-b pb-2">{service?.name}</h3>
@@ -32,15 +40,15 @@ const Confirmation: React.FC = () => {
         <div className="space-y-4">
             <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Calendar size={18} className="text-primary" />
-                <span>{currentBooking.date}</span>
+                <span>{displayBooking.date}</span>
             </div>
             <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Clock size={18} className="text-primary" />
-                <span>{currentBooking.time}</span>
+                <span>{displayBooking.time}</span>
             </div>
             <div className="flex items-center gap-3 text-sm text-gray-600">
                 <MapPin size={18} className="text-primary" />
-                <span className="truncate">{currentBooking.address}</span>
+                <span className="truncate">{displayBooking.address}</span>
             </div>
         </div>
 

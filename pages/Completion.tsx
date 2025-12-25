@@ -10,7 +10,7 @@ const Completion: React.FC = () => {
   const [rating, setRating] = useState(0);
 
   // Fallback for direct access
-  const price = currentBooking?.totalPrice || 85.00;
+  const price = currentBooking?.totalPrice || 85.00; // Correctly uses 85.00 as default if currentBooking is null
 
   return (
     <div className="min-h-screen bg-white p-6 flex flex-col pt-12">

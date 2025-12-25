@@ -18,12 +18,23 @@ const Tracking: React.FC = () => {
     }
   }, [currentBooking, navigate]);
 
-  if (!currentBooking) return <div className="p-10 text-center">No active booking. <br/><button onClick={()=>navigate('/')} className="text-primary underline">Go Home</button></div>;
+  // Mock data for direct access (e.g. screenshot generation)
+  const displayBooking = currentBooking || {
+      id: "BK-7829-23",
+      serviceId: "svc-001",
+      workerId: "wrk-001",
+      date: "25 Dec 2025",
+      time: "10:00 AM",
+      address: "23, Jalan Kampung Kami, 43000",
+      status: BookingStatus.ON_THE_WAY, // Default to On The Way for map view
+      recipientName: "Sarah",
+      totalPrice: 80
+  };
 
-  const worker = WORKERS.find(w => w.id === currentBooking.workerId);
+  const worker = WORKERS.find(w => w.id === displayBooking.workerId) || WORKERS[0];
 
   // Determine view based on status
-  const showMap = currentBooking.status === BookingStatus.ON_THE_WAY || currentBooking.status === BookingStatus.ARRIVED;
+  const showMap = displayBooking.status === BookingStatus.ON_THE_WAY || displayBooking.status === BookingStatus.ARRIVED;
 
   return (
     <div className="flex flex-col h-screen bg-surface">
@@ -36,7 +47,7 @@ const Tracking: React.FC = () => {
              </button>
         </div>
         {/* Render Map Component */}
-        <MapTracking status={currentBooking.status} />
+        <MapTracking status={displayBooking.status} />
       </div>
 
       {/* Bottom Sheet Info */}
@@ -48,10 +59,10 @@ const Tracking: React.FC = () => {
         {/* Status Text */}
         <div className="mb-6 text-center">
             <h2 className="text-xl font-bold text-gray-900 font-poppins mb-1">
-                {currentBooking.status}
+                {displayBooking.status}
             </h2>
             <p className="text-sm text-gray-500">
-                {currentBooking.status === BookingStatus.ON_THE_WAY ? 'Worker is on the way to your location' : 'Service is being performed'}
+                {displayBooking.status === BookingStatus.ON_THE_WAY ? 'Worker is on the way to your location' : 'Service is being performed'}
             </p>
         </div>
 
